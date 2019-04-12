@@ -22,13 +22,13 @@ Or install it yourself as:
 
 ## Usage
 
-require 'weekdays'
-
-Weekdays::Converter.monday('2019-04-10')
-# => '2019-04-08'
-
-Weekdays::Converter.friday('2019-04-10')
-# => '2019-04-12'
+```ruby
+$(main)> require 'weekdays'
+$(main)> Weekdays::Converter.monday('2019-04-10')
+=> '2019-04-08'
+$(main)> Weekdays::Converter.friday('2019-04-10')
+=> '2019-04-12'
+```
 
 ## Development
 
