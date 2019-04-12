@@ -1,4 +1,3 @@
-require "weekdays/version"
 require 'date'
 Dir["./errors/*.rb"].each { |file| require file }
 
