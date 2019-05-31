@@ -1,7 +1,8 @@
 require 'date'
-Dir["./errors/*.rb"].each { |file| require file }
 
 module Weekdays
+  class WeekendError < StandardError; end
+  class InvalidDateError < StandardError; end
   class Converter
     class << self
       DAYS = { monday: 1, tuesday: 2, wednesday: 3, thursday: 4, friday: 5 }
@@ -29,14 +30,14 @@ module Weekdays
 
       def logic(date, num)
         date = string_to_date(date) if date.class == String
-        raise WeekendError if weekend?(date)
+        raise WeekendError, 'Date input is weekend, this is not allowed in this gem' if weekend?(date)
         date_to_string(date + (num - date.wday))
       end
 
       def string_to_date(string)
         Date.parse(string)
       rescue ArgumentError
-        raise InvalidDateError.new
+        raise InvalidDateError, 'Date input is invalid, please try again'
       end
 
       def date_to_string(date)
